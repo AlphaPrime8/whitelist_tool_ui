@@ -1,0 +1,46 @@
+body{
+    background-color:#252329;
+    font-family: 'Comfortaa', cursive;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+header{
+    text-align: center;
+    width: 55%;
+    height: 30px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    background: #28262D;
+    box-shadow: 0px 8px 20px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    color: white;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    height: 600px;
+    background: #28262D;
+    box-shadow: 4px 8px 17px rgba(0, 0, 0, 0.45);
+    border-radius: 15px;
+}
+
+section .Card1 {
+    color: white;
+    text-align: center;
+}
+
+section button {
+    color: white;
+    border: none;
+    line-height: 30px;
+    border-radius: 8px;
+    background: rgba(83, 108, 234, 0.69);
+    box-shadow: 3px 4px 4px rgb(0 0 0 / 45%);
+    font-family: 'Comfortaa', cursive;
+}
