@@ -9,7 +9,8 @@ interface CreateMultisigViewProps {
 export const CreateSuccessView: FC<CreateMultisigViewProps> = (props) => {
 
     // TODO set in config
-    const URL = "http://localhost:1234?project_id=";
+    const URL = window.location.protocol + "//" + window.location.host + "?project_id=";
+    // const URL = "http://localhost:1234?project_id=";
 
     let create_new_html = (
 
