@@ -1,7 +1,6 @@
 import * as anchor from "@project-serum/anchor";
 import {Keypair, PublicKey, SystemProgram, Transaction} from "@solana/web3.js";
-import {TOKEN_PROGRAM_ID, getOrCreateAssociatedTokenAccount, getAssociatedTokenAddress, getAccount} from "@solana/spl-token";
-import {createAssociatedTokenAccountInstruction} from "@solana/spl-token/src/instructions/index";
+import * as spl_token from "@solana/spl-token";
 import {WalletContextState} from "@solana/wallet-adapter-react";
 
 // consts
@@ -20,6 +19,7 @@ async function initProgram(connection: anchor.web3.Connection, wallet: anchor.Wa
 
 async function createProject(connection: anchor.web3.Connection, wallet: anchor.Wallet, project_name: string, mint_address: string) {
 
+    console.log("creating projects...");
     const MASTER_RECORD_PDA_SEED = "master_record_pda_seed";
     const AUTH_PDA_SEED = "auth_pda_seed";
     const FEE_RX_ADDRESS = new PublicKey("GdaZged4o8Szocgn18XvZCmfmshBPQw1HrWbnbhowa14");
@@ -27,6 +27,7 @@ async function createProject(connection: anchor.web3.Connection, wallet: anchor.
 
     // init random creation values
     let project = Keypair.generate();
+    console.log("initializing program...");
     let program = await initProgram(connection, wallet);
 
     // test param generation
@@ -71,7 +72,7 @@ async function createProject(connection: anchor.web3.Connection, wallet: anchor.
                 feeReceiverAddress: FEE_RX_ADDRESS,
                 masterRecordPda: master_record_pda,
                 systemProgram: SystemProgram.programId,
-                tokenProgram: TOKEN_PROGRAM_ID,
+                tokenProgram: spl_token.TOKEN_PROGRAM_ID,
                 rent: anchor.web3.SYSVAR_RENT_PUBKEY,
             },
             signers: [project],
@@ -132,14 +133,14 @@ async function getToken(
     let receiverAta;
     try {
         // @ts-ignore
-        const receiverAtaInfo = await getOrCreateAssociatedTokenAccount(connection, program.provider.wallet, wl_token_mint, program.provider.wallet.publicKey);
+        const receiverAtaInfo = await spl_token.getOrCreateAssociatedTokenAccount(connection, program.provider.wallet, wl_token_mint, program.provider.wallet.publicKey);
         receiverAta = receiverAtaInfo.address;
         console.log("got receiverATA: ", receiverAta.toString());
     }
     catch (e) {
         // add create ata ix to tx
-        receiverAta = await getAssociatedTokenAddress(wl_token_mint, program.provider.wallet.publicKey);
-        const create_ata_ix = createAssociatedTokenAccountInstruction(
+        receiverAta = await spl_token.getAssociatedTokenAddress(wl_token_mint, program.provider.wallet.publicKey);
+        const create_ata_ix = spl_token.createAssociatedTokenAccountInstruction(
             program.provider.wallet.publicKey,
             receiverAta,
             program.provider.wallet.publicKey,
@@ -165,7 +166,7 @@ async function getToken(
                 authPda: auth_pda,
                 masterRecordPda: master_record_pda,
                 systemProgram: SystemProgram.programId,
-                tokenProgram: TOKEN_PROGRAM_ID,
+                tokenProgram: spl_token.TOKEN_PROGRAM_ID,
             },
         }
     );
@@ -200,7 +201,7 @@ async function getProjectInfo(connection: anchor.web3.Connection, wallet: anchor
     );
 
     // get token pool
-    let wlAcctInfo = await getAccount(connection, pool_wl_token);
+    let wlAcctInfo = await spl_token.getAccount(connection, pool_wl_token);
     console.log("got wl AcctInfo: ", wlAcctInfo);
     let amountStr = wlAcctInfo.amount + "";
     console.log("got amount str: ", amountStr);
