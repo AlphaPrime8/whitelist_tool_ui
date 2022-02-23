@@ -38,7 +38,9 @@
         "@solana/buffer-layout": "^4.0.0",
         "react": "^17.0.0",
         "react-dom": "^17.0.0",
-        "react-router-dom": "^6.2.1",
+        "react-router-dom": "^6.2.1"
+    },
+    "devDependencies": {
         "@types/eslint": "^8.2.2",
         "@types/eslint-plugin-prettier": "^3.1.0",
         "@types/node": "^17.0.17",
