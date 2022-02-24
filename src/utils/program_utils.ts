@@ -6,6 +6,7 @@ import {WalletContextState} from "@solana/wallet-adapter-react";
 // consts
 const PROJECT_RECORD_SEED = "project_record_seed";
 const WL_TOKEN_MINT_PDA_SEED = "wl_token_mint_pda_seed";
+const FEE_RX_ADDRESS = new PublicKey("GdaZged4o8Szocgn18XvZCmfmshBPQw1HrWbnbhowa14");
 
 async function initProgram(connection: anchor.web3.Connection, wallet: anchor.Wallet) {
     const PROGRAM_ID = '6ikDEnoYXiwoY9Q7XCkJXoXZb5rRbdCiujtVY5W5SiAb'; // can also load from file as done with localKeypair below
@@ -22,7 +23,6 @@ async function createProject(connection: anchor.web3.Connection, wallet: anchor.
     console.log("creating projects...");
     const MASTER_RECORD_PDA_SEED = "master_record_pda_seed";
     const AUTH_PDA_SEED = "auth_pda_seed";
-    const FEE_RX_ADDRESS = new PublicKey("GdaZged4o8Szocgn18XvZCmfmshBPQw1HrWbnbhowa14");
     const WL_TOKEN_MINT = new PublicKey(mint_address);
 
     // init random creation values
@@ -165,6 +165,7 @@ async function getToken(
                 wlTokenRxAta: receiverAta,
                 authPda: auth_pda,
                 masterRecordPda: master_record_pda,
+                feeReceiverAddress: FEE_RX_ADDRESS,
                 systemProgram: SystemProgram.programId,
                 tokenProgram: spl_token.TOKEN_PROGRAM_ID,
             },
