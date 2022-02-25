@@ -25,14 +25,6 @@ export const ClaimTokenView: FC<CreateMultisigViewProps> = (props) => {
     const wallet = useAnchorWallet();
     const {sendTransaction} = useWallet();
 
-    // const [info, setInfo] = useState({
-    //     balance: "loading...",
-    //     project: PublicKey.default,
-    //     wl_mint_address: PublicKey.default
-    // });
-
-    //TODO check if valid project_id
-    //TODO check if user already redeemed
 
     // Get token balance
     if (!initialized) {
@@ -41,7 +33,9 @@ export const ClaimTokenView: FC<CreateMultisigViewProps> = (props) => {
                 console.log("setInfo to ", data);
                 props.setProjectConfig(data);
 
-                //TODO force rerender?
+                //TODO check if user already redeemed
+                //TODO check if valid project_id
+
 
 
             })
@@ -52,7 +46,6 @@ export const ClaimTokenView: FC<CreateMultisigViewProps> = (props) => {
                     wl_mint_address: PublicKey.default,
                 })
 
-                // TODO forcererender?
             });
         initialized = true;
     }
