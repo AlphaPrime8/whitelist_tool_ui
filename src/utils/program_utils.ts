@@ -16,6 +16,7 @@ async function initProgram(connection: anchor.web3.Connection, wallet: anchor.Wa
     let opts = anchor.Provider.defaultOptions();
     let provider = new anchor.Provider(connection, wallet as anchor.Wallet, opts);
     let idl = await anchor.Program.fetchIdl(programId, provider);
+    console.log("got idl: ", idl)
     let program = new anchor.Program(idl as anchor.Idl, programId, provider);
     return program;
 }
@@ -31,6 +32,7 @@ async function createProject(connection: anchor.web3.Connection, wallet: anchor.
     let project = Keypair.generate();
     console.log("initializing program...");
     let program = await initProgram(connection, wallet);
+    console.log("initialized program: ", program);
 
     // test param generation
     // const SAMPLE_WL_TOKEN_MINT = new PublicKey("GUJb6Tuk3NF6XFVZ4JaB1M2RAoR8CoFpkzrgKAXWC93V");
