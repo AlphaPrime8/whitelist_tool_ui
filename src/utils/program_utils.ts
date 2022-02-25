@@ -56,6 +56,21 @@ async function createProject(connection: anchor.web3.Connection, wallet: anchor.
         program.programId
     );
 
+    // check if project name already in use
+    let projInfo;
+    try {
+        projInfo = await program.account.projectRecord.fetch(project_record_pda);
+        projInfo = false;
+    }
+    catch (e) {
+        // good, project record not already in use.
+        projInfo = true;
+    }
+    if (!projInfo){
+        alert("Project name already in use.")
+        throw "Please use a different project name";
+    }
+
     console.log("generating project named: ", project_name);
     console.log("project pubkey: ", project.publicKey.toString());
     console.log("project wl pool address: ", pool_wl_token.toString());

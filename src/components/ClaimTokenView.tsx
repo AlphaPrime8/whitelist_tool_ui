@@ -32,12 +32,6 @@ export const ClaimTokenView: FC<CreateMultisigViewProps> = (props) => {
             .then((data) => {
                 console.log("setInfo to ", data);
                 props.setProjectConfig(data);
-
-                //TODO check if user already redeemed
-                //TODO check if valid project_id
-
-
-
             })
             .catch((err) => {
                 props.setProjectConfig({
