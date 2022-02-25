@@ -114,9 +114,7 @@ export const CreateProjectView: FC<CreateMultisigViewProps> = (props) => {
                 </div>
               
             </section>
-            <a href="https://mint.peach.fun"><button className="how2" >
-                       How To?
-                        </button></a>
+      
         </div>
     );
 
