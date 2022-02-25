@@ -20,12 +20,6 @@ export const StateSwitcher: FC = () => {
         });
     const { publicKey } = useWallet();
 
-    console.log("got project_id: ", project_id);
-
-    if (project_id){
-        // TODO check that project id is valid
-    }
-
     if (!publicKey) {
         return (<PleaseConnectView setAppState={setAppState}/>);
     }

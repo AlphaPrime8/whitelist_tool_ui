@@ -3,6 +3,7 @@ import {Keypair, PublicKey, SystemProgram, Transaction} from "@solana/web3.js";
 import * as spl_token from "@solana/spl-token";
 import {WalletContextState} from "@solana/wallet-adapter-react";
 import {PROGRAM_ID} from "../Config";
+import {getMint} from "@solana/spl-token";
 
 // consts
 const PROJECT_RECORD_SEED = "project_record_seed";
@@ -241,8 +242,16 @@ async function getProjectInfo(connection: anchor.web3.Connection, wallet: anchor
 
         // get token pool
         let wlAcctInfo = await spl_token.getAccount(connection, pool_wl_token);
+
+        // TODO load mint info - > decimals -> math
+        let mint_address = wlAcctInfo.mint;
+        let mintInfo = await getMint(connection, mint_address);
+        let mint_decimals = mintInfo.decimals;
+        let balance = Number(wlAcctInfo.amount);
+        let balance_decimals = balance / Math.pow(10, mint_decimals);
+        let amountStr = balance_decimals + "";
+        console.log("got mint decimals: ", mint_decimals);
         console.log("got wl AcctInfo: ", wlAcctInfo);
-        let amountStr = wlAcctInfo.amount + "";
         console.log("got amount str: ", amountStr);
         return {
             balance: amountStr,
