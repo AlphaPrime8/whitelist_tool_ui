@@ -114,7 +114,9 @@ export const CreateProjectView: FC<CreateMultisigViewProps> = (props) => {
                 </div>
               
             </section>
-      
+            <a href=""><button className="how2" >
+                       How To?
+                        </button></a>
         </div>
     );
 
