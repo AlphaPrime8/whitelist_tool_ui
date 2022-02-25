@@ -76,6 +76,10 @@ export const ClaimTokenView: FC<CreateMultisigViewProps> = (props) => {
                     <button onClick={()=> getTokenSync()}>
                         Claim Token
                     </button>
+                    <br/>
+                    <p>
+                        WL Token Mint Deposit Address: <br/>{props.projectConfig.wl_deposit_address + ""}
+                    </p>
                 </div>
             </section>
         </div>

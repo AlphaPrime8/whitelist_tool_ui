@@ -226,6 +226,7 @@ async function getProjectInfo(connection: anchor.web3.Connection, wallet: anchor
                 balance: "you have already claimed a WL token for this project.",
                 project: PublicKey.default,
                 wl_mint_address: PublicKey.default,
+                wl_deposit_address: "N/A"
             };
         }
         catch (e) {
@@ -247,6 +248,7 @@ async function getProjectInfo(connection: anchor.web3.Connection, wallet: anchor
             balance: amountStr,
             project: projectAddress,
             wl_mint_address: wlAcctInfo.mint,
+            wl_deposit_address: pool_wl_token.toString(),
         };
     }
     catch (e) {
@@ -256,6 +258,7 @@ async function getProjectInfo(connection: anchor.web3.Connection, wallet: anchor
             balance: "this project does not exist...",
             project: PublicKey.default,
             wl_mint_address: PublicKey.default,
+            wl_deposit_address: "N/A"
         };
     }
 }

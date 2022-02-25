@@ -16,6 +16,7 @@ export const StateSwitcher: FC = () => {
     const [projectConfig, setProjectConfig] = useState(
         {
             balance: "loading...",
+            wl_deposit_address: "loading..."
         });
     const { publicKey } = useWallet();
 
