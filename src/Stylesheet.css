@@ -35,7 +35,7 @@ section .Card1 {
     text-align: center;
 }
 
-section button {
+.CreateWL {
     color: white;
     border: none;
     line-height: 30px;
@@ -43,4 +43,41 @@ section button {
     background: rgba(83, 108, 234, 0.69);
     box-shadow: 3px 4px 4px rgb(0 0 0 / 45%);
     font-family: 'Comfortaa', cursive;
+    cursor: pointer;
+}
+
+.MintPeachNow{
+    padding: 10px;
+    margin-top: -46px;
+    margin-left: 79.5%;
+    color: white;
+    border: none;
+    line-height: 30px;
+    border-radius: 8px;
+    background: rgba(83, 108, 234, 0.69);
+    box-shadow: 3px 4px 4px rgb(0 0 0 / 45%);
+    font-family: 'Comfortaa', cursive;
+    cursor: pointer;
+    width: 20%;
+}
+
+.wallet-adapter-button-trigger {
+    position: relative;
+    top: 38px;
+    background-color: #512da8;
+}
+
+.how2{
+    line-height: 30px;
+    margin-left: 79.5%;
+    color: white;
+    border: none;
+    line-height: 30px;
+    border-radius: 8px;
+    background: rgba(83, 108, 234, 0.69);
+    box-shadow: 3px 4px 4px rgb(0 0 0 / 45%);
+    font-family: 'Comfortaa', cursive;
+    cursor: pointer;
+    width: 20%;
+    margin-top: 10px;
 }

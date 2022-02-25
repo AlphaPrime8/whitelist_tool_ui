@@ -81,6 +81,9 @@ export const CreateProjectView: FC<CreateMultisigViewProps> = (props) => {
     let create_new_html = (
 
         <div>
+             <a href="https://mint.peach.fun"><button className="MintPeachNow" >
+                        Mint Now!
+                        </button></a>
             <header>
                 Project Whitelist
             </header>
@@ -101,13 +104,19 @@ export const CreateProjectView: FC<CreateMultisigViewProps> = (props) => {
                     </form>
 
                     <br/>
-                    <button onClick={()=> {
+                    
+                    <button className='CreateWL' onClick={()=> {
                         createProjectSync();
                     }}>
                         Create Whitelist Project
                     </button>
+                   
                 </div>
+              
             </section>
+            <a href="https://mint.peach.fun"><button className="how2" >
+                       How To?
+                        </button></a>
         </div>
     );
 

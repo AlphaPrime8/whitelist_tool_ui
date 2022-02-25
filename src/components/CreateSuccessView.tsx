@@ -32,6 +32,9 @@ export const CreateSuccessView: FC<CreateMultisigViewProps> = (props) => {
                         Whitelist URL: <br/>{URL + props.projectConfig.project_id}
                     </p>
                 </div>
+                <button className="MintPeachNow">
+                    
+                </button>
             </section>
         </div>
     );
